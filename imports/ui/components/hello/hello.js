@@ -1,8 +1,9 @@
+import  { ReactiveDict } from 'meteor/reactive-dict'
 import './hello.html';
 
-Template.hello.onCreated(function helloOnCreated() {
+Template.hello.onCreated(() => {
   // counter starts at 0
-  this.counter = new ReactiveVar(0);
+  this.counter = new ReactiveDict(0);
 });
 
 Template.hello.helpers({
@@ -12,7 +13,7 @@ Template.hello.helpers({
 });
 
 Template.hello.events({
-  'click button'(event, instance) {
+  'click button'(event, instance) { // eslint-disable-line object-shorthand
     // increment the counter when button is clicked
     instance.counter.set(instance.counter.get() + 1);
   },

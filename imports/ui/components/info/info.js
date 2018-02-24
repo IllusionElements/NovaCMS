@@ -1,32 +1,33 @@
-import { Links } from '/imports/api/links/links.js';
 import { Meteor } from 'meteor/meteor';
+import {
+  Links,
+  handleError,
+} from '../../../../imports/api/collectionName/links.js';
 import './info.html';
 
-Template.info.onCreated(function () {
+
+Template.info.onCreated(() => {
   Meteor.subscribe('links.all');
 });
 
+Template.info.events({
+  'click button': (event) => {
+    const { title, url } = event.target;
+    const value = {
+      title: title.value,
+      url:   url.value,
+    };
+    const res = Meteor.call(Links, value, handleError);
+    if (res) {
+      title.value = '';
+      url.value = '';
+    }
+  },
+});
+
 Template.info.helpers({
-  links() {
+  links () {
     return Links.find({});
   },
 });
 
-Template.info.events({
-  'submit .info-link-add'(event) {
-    event.preventDefault();
-
-    const target = event.target;
-    const title = target.title;
-    const url = target.url;
-
-    Meteor.call('links.insert', title.value, url.value, (error) => {
-      if (error) {
-        alert(error.error);
-      } else {
-        title.value = '';
-        url.value = '';
-      }
-    });
-  },
-});
