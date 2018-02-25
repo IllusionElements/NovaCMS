@@ -1,8 +1,6 @@
+/* eslint-disable import/extensions,import/no-unresolved,import/no-extraneous-dependencies */
 // All links-related publications
 
-import { Meteor } from 'meteor/meteor';
-import { Links } from '../links.js';
+import { Meteor } from 'meteor/meteor'
 
-Meteor.publish('links.all', function () {
-  return Links.find();
-});
+Meteor.Error()
