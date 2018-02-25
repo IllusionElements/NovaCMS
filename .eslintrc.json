@@ -1,0 +1,42 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "meteor"
+  ],
+  "extends": [
+    "airbnb/base",
+    "plugin:meteor/recommended"
+  ],
+  "env": {
+    "meteor": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "semi": [
+      2,
+      "never"
+    ],
+    "no-unexpected-multiline": 2,
+    "no-throw-literal": 0,
+    "meteor/no-session": [
+      0
+    ],
+    "meteor/prefer-session-equals": [
+      2
+    ]
+  },
+  "globals": {
+    "Foo": false,
+    "Bar": false,
+    "FlowRouter": false,
+    "GoogleMaps": false,
+    "moment": false
+  }
+}
