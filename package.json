@@ -2,11 +2,13 @@
   "name": "NovaCMS",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings settings-development.json --port $IP:$PORT",
+    "test": "meteor test --driver-package practicalmeteor:mocha --port 8082"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
     "griddle-react": "^1.12.1",
+    "md5": "^2.2.1",
     "meteor-node-stubs": "^0.3.3",
     "mobx": "^3.6.1",
     "mobx-react": "^4.4.2",
@@ -18,7 +20,9 @@
     "semantic-ui-react": "^0.79.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-decorators": "^6.24.1"
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "chai": "^4.1.2",
+    "sinon": "^4.5.0"
   },
   "parser": "babel-eslint"
 }
