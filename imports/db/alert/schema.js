@@ -1,9 +1,7 @@
 import SimpleSchema from 'simpl-schema';
-
+import test from '../../api/alert/testing/server/testData'
 const composeSchema = (type, optional, ...rest) => (
-  type.constructor.name === 'Object' ?
-  { ...type } :
-  {
+  type.constructor.name === 'Object' ? { ...type } : {
     type,
     optional,
     ...rest
@@ -22,11 +20,11 @@ const Schema = {
   message: Object,
   'message.title': composeMessageSchema({ max: 32, optional: true, label: 'Alert Title (Optional)' }),
   'message.body': composeMessageSchema({ max: 500, optional: false, label: 'Alert Body (required)' }),
-  userId: SimpleSchema.oneOf(String, Object),
+  userId: String,
   date: Object,
   'date.expiry': dateSchema,
   'date.onCreated': { ...dateSchema, optional: false },
   visible: Boolean,
 };
 
-export const AlertsSchema = new SimpleSchema(Schema);
+export const AlertsSchema = new SimpleSchema({ _id: { type: String, optional: true }, ...Schema });

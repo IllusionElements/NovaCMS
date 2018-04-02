@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json --port $IP:$PORT",
-    "test": "meteor test --driver-package practicalmeteor:mocha --port 8082"
+    "test": "meteor test --driver-package cultofcoders:mocha --port $IP:$PORT"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
+    "event-emitter": "^0.3.5",
     "griddle-react": "^1.12.1",
     "md5": "^2.2.1",
     "meteor-node-stubs": "^0.3.3",
@@ -17,7 +18,9 @@
     "react-dom": "^16.3.0",
     "react-router": "^4.2.0",
     "recompose": "^0.26.0",
-    "semantic-ui-react": "^0.79.0"
+    "semantic-ui-react": "^0.79.0",
+    "simpl-schema": "^1.4.2",
+    "spacejam": "^1.6.1"
   },
   "devDependencies": {
     "babel-plugin-transform-decorators": "^6.24.1",

@@ -1,5 +1,8 @@
-import AlertSchema from './schema.js';
-import { Collection } from 'meteor/mongo';
+import { AlertsSchema } from './schema.js';
+import { Mongo } from 'meteor/mongo';
+
+const { Collection } = Mongo
 
 export const Alert = new Collection('alerts')
-Alert.attachSchema(AlertSchema)
+
+Alert.attachSchema(AlertsSchema)

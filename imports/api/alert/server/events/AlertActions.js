@@ -1,9 +1,9 @@
-import EventEmitter from 'event-emitter';
-import generateEvents from '../../../utils/helpers.js'
+import EventEmitter  from 'event-emitter';
+import { generateEvents } from '../../../../utils/helpers.js'
 
-const AlertEmitter = new EventEmitter();
-
-const AlertEvents = generateEvents(
+export const AlertEmitter = new EventEmitter();
+console.log(AlertEmitter)
+export const AlertEvents = generateEvents(
   'alert',
   'create',
   'update',
@@ -13,7 +13,5 @@ const AlertEvents = generateEvents(
   'deleted'
 );
 
-export {
-  AlertEmitter,
-  AlertEvents
-}
+
+
