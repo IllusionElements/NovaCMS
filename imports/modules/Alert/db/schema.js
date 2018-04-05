@@ -1,12 +1,5 @@
 import SimpleSchema from 'simpl-schema';
-import test from '../../api/alert/testing/server/testData'
-const composeSchema = (type, optional, ...rest) => (
-  type.constructor.name === 'Object' ? { ...type } : {
-    type,
-    optional,
-    ...rest
-  }
-)
+import composeSchema from '../../../utils'
 
 const dateSchema = composeSchema(Date, true)
 const MessageSchema = (composer) => ({ ...args }) => {
