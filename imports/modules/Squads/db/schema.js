@@ -1,11 +1,12 @@
 //schema.js
-import { composeUnitSchema } from '../defaultSchema/units.js'
+import { composeUnitSchema } from '../../../db/defaultSchemas/units.js'
 import SimpleSchema from 'simpl-schema'
 
 const Schema = composeUnitSchema({
   squadId: SimpleSchema.Integer,
-  members: {
-    type: Array,
+  members: [Object],
+  limit: {
+    type: Number,
     min: 0,
     max: 200,
   },

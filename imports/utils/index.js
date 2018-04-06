@@ -27,7 +27,11 @@ export const extend = (original, target) => {
 }
 
 //composes schemas
-export const extendSchema = (schemaToAttach) => (schema) => extend(schema, schemaToAttach);
+export const composeFunction = fn => fn2 => fn2(fn);
+@composeFunction(extend)
+const extendSchema = fn => schemaToAttach => schema => fn(schema, schemaToAttach);
+
+export { extendSchema };
 
 export const composeSchema = (type, optional, ...rest) => (
     type.constructor.name === 'Object' ? { ...type } : {
