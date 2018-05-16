@@ -1,5 +1,5 @@
 import { Alert, alertQueries } from '../../db'
-import { Security } from '../server/security';
+import { Security } from '/imports/api/security';
 import { AlertStore } from '../server/events/AlertActions.js'
 import { check } from 'meteor/check'
 
@@ -8,14 +8,14 @@ export class AlertService {
     check(data, Object);
     const { uid } = data;
     const alertId = Alert.insert(data);
-    AlertStore.dispath('ALERT_CREATED', { alertId, uid })
+    AlertStore.dispatch('ALERT_CREATED', { alertId, uid })
     return alertId;
   }
 
   static deleteAlert({ uid, alertId }) {
     Security.checkRole(uid, 'Admin');
     Alert.deleteOne(alertId);
-    AlertStore.dispath('ALERT_DELETED', { alertId, uid });
+    AlertStore.dispatch('ALERT_DELETED', { alertId, uid });
 
     return alertId;
   }

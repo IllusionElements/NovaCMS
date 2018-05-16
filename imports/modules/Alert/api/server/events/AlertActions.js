@@ -1,5 +1,5 @@
 import EventEmitter from 'event-emitter';
-import { generateEvents, store } from '../../../../utils/helpers.js'
+import { generateEvents, store } from '/imports/utils/'
 
 const AlertEvents = generateEvents(
   'alert',

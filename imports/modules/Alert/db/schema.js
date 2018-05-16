@@ -1,5 +1,5 @@
 import SimpleSchema from 'simpl-schema';
-import composeSchema from '../../../utils'
+import { composeSchema } from '/imports/utils'
 
 const dateSchema = composeSchema(Date, true)
 const MessageSchema = (composer) => ({ ...args }) => {

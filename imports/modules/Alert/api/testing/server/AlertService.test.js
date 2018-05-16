@@ -1,4 +1,4 @@
-import AlertService from '../../services/AlertService.js'
+import AlertService from '../../services/AlertServiceModel.js'
 import { assert } from 'chai'
 import testData from './testData.js'
 import { resetDatabase } from 'meteor/xolvio:cleaner'
@@ -20,11 +20,19 @@ const testFactory = function (_name, it_des) {
     }
 }
 
-function notify({ alertId }) {
-    console.log(alertId)
-};
+const db = {
+    createQuery: '',
+    insert: '',
+    remove: '',
+    'update': '',
+}
 
-const AlertServiceTest = new AlertService(notify)
+function store() {
+    function dispatch() {}
+    return { dispatch };
+}
+
+const AlertServiceTest = new AlertService({ db, store })
 
 console.log(AlertServiceTest);
 (function (window, $, { AlertServiceModel, testData, assert }) {

@@ -1,26 +1,31 @@
-import * as _ from '../../api/helpers.js'
+import extendSchema from '@novacms/extendschema'
 
-export const composeSchema = _.extendSchema({
-  "reason": {
+export const composeSchema = extendSchema({
+  reason: {
     type: String,
-    label: "Blacklist Reason"
+    label: 'Blacklist Reason',
   },
-  "type": {
+  type: {
     type: String,
-    label: "type of blacklist/dnh/mr",
-    allowedValues: ['Blacklisted', 'Squad DNH', 'Division DNH', 'DNH', 'Membership Revoked']
+    label: 'type of blacklist/dnh/mr',
+    allowedValues: [
+      'Blacklisted',
+      'Squad DNH',
+      'Division DNH',
+      'DNH',
+      'Membership Revoked',
+    ],
   },
-  "blkauth": {
+  blkauth: {
     type: String,
-    label: "leader who authorized blacklist",
+    label: 'leader who authorized blacklist',
   },
-  "date": {
+  date: {
     type: Date,
-    label: "Date Blacklisted",
+    label: 'Date Blacklisted',
   },
-  "blId": {
+  blId: {
     type: Number,
-    label: "blacklist id",
-
-  }
+    label: 'blacklist id',
+  },
 });

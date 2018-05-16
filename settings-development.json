@@ -1,0 +1,15 @@
+{
+  "redisOplog": {
+    "redis": {
+      "port": 3279,
+      "host": 127.0.0.1,
+    },
+    "retryIntervalMS": 10000,
+    "mutationDefaults": {
+      "optimistic": true,
+      "pushToRedis": true,
+    },
+    "debug": true,
+    "overidePublish": true
+  }
+}

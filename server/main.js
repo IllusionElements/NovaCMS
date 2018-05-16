@@ -1,11 +1,4 @@
-/* eslint-disable import/extensions */
-// Server entry point, imports all server code
-import '../imports/startup/server'
-import '../imports/startup/both'
+import Schema from './schema.js'
 
-
-Meteor.methods({
-  'console.log'(dats){
-    console.log(dats)
-  }
-})
+const Collections = import('meteor/mongo').then(({Collection})=> new Collection())
+export default Collections
