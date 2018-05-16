@@ -1,4 +1,5 @@
 import SimpleSchema from 'simpl-schema'
+
 const defineArraySchema = ({ ...options }) => {
   const { name, type, ...rest } = options
   const arraySchema = `${name}.$`
@@ -43,6 +44,6 @@ Schema.Background = Object.assign(
   }),
 )
 
-const BackgroundSchema = new SimpleSchema(Schema.Background);
+const BackgroundSchema = new SimpleSchema(Schema.Background)
 
 export default BackgroundSchema
