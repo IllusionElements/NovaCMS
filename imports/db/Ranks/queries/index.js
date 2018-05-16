@@ -1,9 +1,9 @@
-import Ranks from './collection.js'
+import Ranks from '../collection.js'
 
 const RanksDisplayQuery = Ranks.createQuery('getRanksList', {
   $filters({ filters, options, params }) {
     const { $options, ...$filters } = params
-    options.sort = $options.sort // eslint-disable-line
+    options.sort = $options.sort
     Object.assign(filters, $filters)
   },
   id: 1,
@@ -11,4 +11,4 @@ const RanksDisplayQuery = Ranks.createQuery('getRanksList', {
   abbr: 1,
 })
 
-export default RanksDisplayQuery;
+export default RanksDisplayQuery

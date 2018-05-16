@@ -1,16 +1,18 @@
+// eslint-disable no-underscore-dangle
 import { check, Match } from 'meteor/check'
 import moment from 'moment'
 import dependancyInjector from '/imports/utils/extensions/dependancyInjector'
 import { pipe } from '/imports/utils'
-const noEmptyString = Match.where(x => {
+
+const noEmptyString = Match.where((x) => {
   check(x, String)
   return x.length > 0
 })
 
-export class MemberServiceModel {
+export default class MemberServiceModel {
   constructor({ services, collections, Event }) {
-    this.EventStore = Event.EventStore;
-    this.Events = Event.actions;
+    this.EventStore = Event.EventStore
+    this.Events = Event.actions
     const dependancies = [collections, services]
     dependancies
       .forEach(dependancy => (
@@ -20,7 +22,7 @@ export class MemberServiceModel {
 
   insertMember({ memberData, userId = Meteor.userId() }) {
     if (this._getMember(memberData.gamertag)) {
-      throw new Meteor.Error(`duplicate entry for ${memberData.gamertag}`);
+      throw new Meteor.Error(`duplicate entry for ${memberData.gamertag}`)      
     }
     check(memberData, Object)
     check(userId, noEmptyString)
@@ -61,7 +63,7 @@ export class MemberServiceModel {
     const { _id } = this._getMember({ gamertag })
     pipe(
       this.EventStore.dispatch,
-      this.Events.removeMember
+      this.Events.removeMember,
     )(_id)
     return _id
   }

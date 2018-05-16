@@ -1,10 +1,11 @@
-import { Security } from '/imports/api/security';
-import { check, Match } from 'meteor/check'
+import { Security } from '/imports/api/security' // eslint-disable-lin
+import { check, Match } from 'meteor/check' // eslint-disable-line
 import { MemberStore, MemberEvents } from '../events'
 import { Members, DeletedMembers } from '../../../db'
-import { MemberServiceModel } from './MemberServiceModel.js'
+import { MemberServiceModel } from './MemberServiceModel'
+
 // TO-DO: CREATE & IMPORT FUNCTIONS
-export const MemberService = new MemberServiceModel({
+const MemberService = new MemberServiceModel({
   services: [Security],
   collections: [
     ['Members', Members],
@@ -16,3 +17,4 @@ export const MemberService = new MemberServiceModel({
   },
 })
 
+export default MemberService

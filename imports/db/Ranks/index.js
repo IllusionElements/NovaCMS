@@ -1,8 +1,9 @@
-import { Mongo } from 'meteor/mongo'
-import { RankSchema } from './schema.js'
-
-const Ranks = new Mongo.Collection('rank');
-
-export default Ranks;
+import Ranks from './collection.js'
+import RankSchema from './schema.js'
+import RanksDisplayQuery from './queries'
 
 Ranks.attachSchema(RankSchema)
+
+export { Ranks }
+
+export { RanksDisplayQuery }

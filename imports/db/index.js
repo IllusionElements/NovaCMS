@@ -1,7 +1,3 @@
-import { Ranks } from './Ranks/collection.js'
-import { Recruits } from './Recruits'
+import { Ranks } from './Ranks/'
 
-export {
-  Ranks,
-  Recruits,
-}
+export default Ranks

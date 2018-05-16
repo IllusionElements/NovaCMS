@@ -1,7 +1,9 @@
-import SimpleSchema from 'simpl-schema';
+import SimpleSchema from 'simpl-schema'
 
-export const RankSchema = new SimpleSchema({
+const RankSchema = new SimpleSchema({
   id: Number,
   name: String,
   abbr: String,
-});
+})
+
+export default RankSchema
