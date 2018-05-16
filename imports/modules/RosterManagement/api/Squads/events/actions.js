@@ -1,5 +1,6 @@
-import { Events } from './constants.js'
 import { makeEventAction } from '/imports/utils'
+import { Events } from './constants.js'
+
 
 const makeSquadEvent = (type, ...args) => makeEventAction(Events[type], 'squad._id', ...args)
 export const createSquad = makeSquadEvent('SQUAD_INSERTED', 'user._id')

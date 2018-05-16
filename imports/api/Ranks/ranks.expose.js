@@ -1,9 +1,9 @@
-import { RanksDisplayQuery } from '../../db/Ranks/queries.js'
+import RanksDisplayQuery from '../../db/Ranks/'
 
 RanksDisplayQuery.expose({
-  firewall(userId, params){
-    params = {};
+  firewall(userId, params) {
+    params.userId = userId
   },
   publication: true,
   unblock: true,
-});
+})

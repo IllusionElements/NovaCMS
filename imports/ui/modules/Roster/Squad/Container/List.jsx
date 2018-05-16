@@ -1,9 +1,9 @@
 import { withQuery } from 'meteor/cultofcoders:grapher-react'
-import React, { Component } from 'react'
-import SquadListQuery from '..'
-import MemberList from '..'
-import SquadListContainer from './SquadListContainer.jsx'
 import { Table } from 'semantic-ui-react'
+import React from 'react'
+import SquadListQuery from '..'
+import SquadListContainer from './SquadListContainer.jsx'
+import PropType from 'prop-types'
 
 const SquadMembersTable = ({ members }) => (
   <Table>
@@ -20,7 +20,14 @@ const SquadMembersTable = ({ members }) => (
   </Table>
 )
 
-const SquadMembersTableContainer = withQuery(({ _id = null, name = null }) =>(
+SquadMembersTable.propTypes = {
+  members: PropType.arrayOf(PropType.string),
+}
+
+SquadMembersTable.defaultProps = {
+  members: [],
+}
+export default withQuery(({ _id = null, name = null }) => (
   _id
     ? SquadListQuery.clone({ _id })
     : SquadListQuery.clone({ name })), {

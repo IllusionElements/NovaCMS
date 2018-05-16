@@ -1,14 +1,13 @@
+// import CodeService from '/imports/api/codes'
 import { MemberStore, Events } from '../events'
-import Security from '/imports/api/security'
-import CodeService from '/imports/api/codes'
 
 MemberStore.subscribe(Events.ADD_MEMBER, ({
-  member: { code },
+  // member: { code },
   user,
 }) => {
-  Security.userHasPermision('addMemberToSquad', user._id)
-  CodeService.isValidCode(code)
-  CodeService.doesCodeExist(code)
+  import('/imports/api/security').then(Security => Security.userHasPermision('addMemberToSquad', user._id))
+  // CodeService.isValidCode(code)
+  // CodeService.doesCodeExist(code)
 })
 
 MemberStore.subscribe(Events.MEMBER_INSERTED)

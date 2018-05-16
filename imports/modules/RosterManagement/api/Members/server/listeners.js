@@ -1,7 +1,7 @@
 import { MemberStore, Events, XboxLiveAPIService } from '../events'
 
 /* global Security, BackgroundCheckerService, ErrorLogService */
-const checkBackground = async member => {
+const checkBackground = async (member) => {
   const bg = await BackgroundCheckerService
     .checkFriends(member.friendsList)
   return Security.notify(member.gamertag, bg)

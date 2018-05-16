@@ -1,6 +1,8 @@
-import { Member } from '../collection.js'
 import has from '@novacms/has'
 import assign from '@novacms/assign'
+import { Member } from '../collection.js'
+
+
 export const memberQuery = Member.createQuery('Member', {
   $filter({ filters, params }) {
     if (has(params, '_id')) {

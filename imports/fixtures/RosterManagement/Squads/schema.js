@@ -14,17 +14,17 @@ const squadData = ({ name, visible = true } = {}, [...gametype]) => ({
   gametype: faker.random.arrayElement(gametype),
 })
 
-const $quad = squadData({
+const Squad = squadData({
   name: faker.internet.userName(),
 }, ['CoD:WWII', 'Bf2', 'fornite', 'PUBG', 'CoD XVI', 'TC: RSS', "Tom Clancy's Ghost Recon", 'HearthStone'])
 
 const NovaSquad = {
   divisionId: faker.random.uuid(),
-  members: Array($quad.limit).fill(0).map(() => faker.userCard()),
+  members: Array(Squad.limit).fill(0).map(() => faker.userCard()),
 }
 
 export default {
-  ...$quad,
+  ...Squad,
   ...NovaSquad,
   ...createMetadata({
     createdBy: faker.internet.userName(),

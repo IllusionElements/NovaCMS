@@ -10,10 +10,10 @@ const is = key => ({
   },
 })
 
-const validateSchema = schema => {
+const validateSchema = (schema) => {
   const formattedSchema = Object
     .keys(schema)
-    .reduce((Schema, key)=>{
+    .reduce((Schema, key) => {
       const assignToSchema = assign(Schema)
       if (!is('type').$in(schema[key])) {
         return assignToSchema({
@@ -26,11 +26,12 @@ const validateSchema = schema => {
   return new SimpleSchema(formattedSchema).validator({ clean: true })
 }
 
-export const validationMixin = (methodOptions) => {
-  const { schema } = methodOptions;
+const validationMixin = (methodOptions) => {
+  const { schema } = methodOptions
 
-  const validate = validateSchema(schema);
+  const validate = validateSchema(schema)
 
   Object.assign(methodOptions, validate)
 }
 
+export default validationMixin

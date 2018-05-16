@@ -1,3 +1,5 @@
-import { Security } from './security';
+import { Security } from './security'
 
-export { Security };
+export const query = {}
+
+export { Security }

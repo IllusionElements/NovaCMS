@@ -1,6 +1,6 @@
 import extendSchema from '@novacms/extendschema'
 
-export const composeSchema = extendSchema({
+const composeSchema = extendSchema({
   reason: {
     type: String,
     label: 'Blacklist Reason',
@@ -28,4 +28,6 @@ export const composeSchema = extendSchema({
     type: Number,
     label: 'blacklist id',
   },
-});
+})
+
+export default composeSchema

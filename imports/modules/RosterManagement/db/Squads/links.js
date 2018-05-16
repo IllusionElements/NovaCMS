@@ -1,6 +1,6 @@
-import { Squads } from './collection.js'
+import { Squads } from './'
 import { Members } from '../Members/collection.js'
-import { Division } from '../../Divisions/collection.js'
+import { Division } from '../Divisions/collection.js'
 
 export default Squads.addLinks({
   members: {
@@ -11,5 +11,5 @@ export default Squads.addLinks({
   division: {
     inversedBy: 'division',
     collection: Division,
-  }
+  },
 })

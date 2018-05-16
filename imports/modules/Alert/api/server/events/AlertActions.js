@@ -1,4 +1,3 @@
-import EventEmitter from 'event-emitter';
 import { generateEvents, store } from '/imports/utils/'
 
 const AlertEvents = generateEvents(
@@ -8,8 +7,8 @@ const AlertEvents = generateEvents(
   'delete',
   'created',
   'updated',
-  'deleted'
-);
+  'deleted',
+)
 
 
 export const AlertsStore = store(AlertEvents)

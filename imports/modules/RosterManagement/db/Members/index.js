@@ -3,9 +3,7 @@ import { memberListQuery } from './queries'
 import memberLinks from './links.js'
 
 
-export {
-  Members,
-  memberListQuery,
-  memberLinks,
-}
+export { Members }
+export { memberListQuery }
+export { memberLinks }
 

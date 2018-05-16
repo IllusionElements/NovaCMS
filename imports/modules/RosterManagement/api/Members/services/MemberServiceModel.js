@@ -1,7 +1,8 @@
 // eslint-disable no-underscore-dangle
 import { check, Match } from 'meteor/check'
+import Meteor from 'meteor/meteor'
 import moment from 'moment'
-import dependancyInjector from '/imports/utils/extensions/dependancyInjector'
+import dependancyInjector from '@novacms/dependancy-injector'
 import { pipe } from '/imports/utils'
 
 const noEmptyString = Match.where((x) => {
@@ -22,7 +23,7 @@ export default class MemberServiceModel {
 
   insertMember({ memberData, userId = Meteor.userId() }) {
     if (this._getMember(memberData.gamertag)) {
-      throw new Meteor.Error(`duplicate entry for ${memberData.gamertag}`)      
+      throw new Meteor.Error(`duplicate entry for ${memberData.gamertag}`)
     }
     check(memberData, Object)
     check(userId, noEmptyString)
@@ -59,7 +60,7 @@ export default class MemberServiceModel {
     return update
   }
 
-  removeMember(gamertag, userId) {
+  removeMember(gamertag/* , userId */) {
     const { _id } = this._getMember({ gamertag })
     pipe(
       this.EventStore.dispatch,
@@ -85,8 +86,6 @@ export default class MemberServiceModel {
     this.EventStore.dispatch(deletedMember)
     return this._removeByMongoID({ _id })
   }
-
-  // TODO: add _getMember Method
   _getMember = ({ gamertag = null, memberId = null }) => this.Members.createQuery({
     $filter: gamertag || memberId,
   }).clone().fetchOne()

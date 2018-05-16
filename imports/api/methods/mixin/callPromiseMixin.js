@@ -1,12 +1,19 @@
-import { Type } from '../'
+import { Type } from '@novacms/type-check'
+import { Meteor } from 'meteor/meteor'
 
-
-export const callPromiseMixin = methodOptions => {
-  const { name } = methodOptions
+const callPromiseMixin = (methodOptions) => {
   const callPromise = function callPromise(args) {
-    return new Promise((resolve, reject) => Type.isObject(args) ?
-      reject(new Meteor.Error('invalid-arguments')) :
-      this.call(args, (err, res) => err ? reject(err) : resolve(res)))
+    return new Promise((resolve, reject) => {
+      const rejectError = new Meteor.Error('invalid-arguments')
+      this.call(args, (err, res) => {
+        if (Type.isObject(args)) reject(rejectError)
+        if (err) reject(err)
+
+        resolve(res)
+      })
+    })
   }
   return Object.assign(methodOptions, { callPromise })
 }
+
+export default callPromiseMixin

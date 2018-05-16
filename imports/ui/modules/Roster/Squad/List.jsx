@@ -4,11 +4,11 @@ const headers = []
 const MemberList = props => (
   <table striped>
     <Table.Header
-      headers = { headers }
+      headers = {headers}
       />
     <Table.Body>
       <Table.Row
-        data = { props.members } />
+        data = {props.members} />
     </Table.Body>
   </table>
 )

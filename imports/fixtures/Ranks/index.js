@@ -1,6 +1,7 @@
-import { Ranks } from '/imports/db/Ranks/collection.js';
+import { Ranks } from '/imports/db/Ranks/collection.js'
+import { Meteor } from 'meteor/meteor'
 
-const RANKS = {
+const COMMUNITY_RANKS = {
   fixtures: [
     { rankID: 1, rankName: 'Private', abbr: 'PVT' },
     { rankID: 2, rankName: 'Corporal', abbr: 'CPL' },
@@ -21,11 +22,10 @@ const RANKS = {
     { rankID: 17, rankName: 'Board of Directors', abbr: 'BOD' },
     { rankID: 18, rankName: 'Creators', abbr: 'CTR' },
   ],
-  //schema: ,
-};
+}
 if (!Meteor.isDevelopment) {
   Meteor.startup(() => {
-    Ranks._ensureIndex({ rankID: 1 });
-    RANKS.fixtures.forEach(fixture => Ranks.insert(fixture));
-  });
+    Ranks._ensureIndex({ rankID: 1 })
+    COMMUNITY_RANKS.fixtures.forEach(fixture => Ranks.insert(fixture));
+  })
 }

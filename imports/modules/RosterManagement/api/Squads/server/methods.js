@@ -1,17 +1,19 @@
-import { SquadManagementService, SquadService } from '../services/SquadService.js'
 import { ValidatedMethod } from 'meteor/mdg:validated-method'
-import { callPromiseMixin, validationMixin } from 'imports/utils/mixins'
-import { SquadSchema } from '../../../db/Squads/schema.js'
+import check from 'meteor/check'
+import { callPromiseMixin, validationMixin } from '@novacms/mixins'
 import Security from 'imports/api/Security'
-const DefaultValidatedMethod = ({ name, run, ...rest }) => ValidatedMethod({
-  name: `squad.${name}`,
-  mixins: [callPromiseMixin, validationMixin],
-  run,
-})
-const addMixins = (...args) => (...mixins) => ''
+import { SquadSchema } from '../../../db/Squads/schema.js'
+import { SquadManagementService, SquadService } from '../services/SquadService.js'
+
+const addMixins = (...mixins) => target => (
+  mixins.forEach((Mixin) => {
+    const { mixin } = target || []
+    target.mixin = mixin.concat(Mixin) // eslint-disable-line
+  })
+)
 @addMixins(callPromiseMixin, validationMixin)
 class ValidatedMethodSquad {
-  name = 'squad.insert'
+  name = 'insert'
 
   validate = this.schema.validate()
 

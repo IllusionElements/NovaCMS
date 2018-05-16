@@ -1,43 +1,41 @@
-import { Alert, alertQueries } from '../../db'
-import { Security } from '/imports/api/security';
-import { AlertStore } from '../server/events/AlertActions.js'
+import { Security } from '/imports/api/security'
 import { check } from 'meteor/check'
+import { AlertStore } from '../server/events/AlertActions.js'
+import { Alert, alertQueries } from '../../db'
 
-export class AlertService {
+export default class AlertService {
   static createAlert(data) {
-    check(data, Object);
-    const { uid } = data;
-    const alertId = Alert.insert(data);
+    check(data, Object)
+    const { uid } = data
+    const alertId = Alert.insert(data)
     AlertStore.dispatch('ALERT_CREATED', { alertId, uid })
-    return alertId;
+    return alertId
   }
 
   static deleteAlert({ uid, alertId }) {
-    Security.checkRole(uid, 'Admin');
-    Alert.deleteOne(alertId);
-    AlertStore.dispatch('ALERT_DELETED', { alertId, uid });
+    Security.checkRole(uid, 'Admin')
+    Alert.deleteOne(alertId)
+    AlertStore.dispatch('ALERT_DELETED', { alertId, uid })
 
-    return alertId;
+    return alertId``
   }
 
   static updateAlert({ uid, alertId, data }) {
-    const $alert = AlertService._getAlert({ alertId });
+    const $alert = this._getAlert({ alertId })
     if ($alert.userId !== uid) {
       Security.checkRole(uid, 'Admin')
     }
 
     Alert.updateOne(({ _id }) => _id === alertId, { ...data })
-    return true;
+    return true
   }
 
   static _getAlert({ alertId }) {
-
     const query = alertQueries.list
       .clone()
       .setParams({ alertId })
 
 
-    return query.fetchOne();
+    return query.fetchOne()
   }
-
 }

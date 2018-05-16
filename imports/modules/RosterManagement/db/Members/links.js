@@ -1,8 +1,10 @@
-import { Members } from './collection.js'
-import { Squads } from '../Squads/collection.js'
-import { Divisions } from '../Divisions/collection.js'
 import { Ranks, Recruits } from '/imports/db'
 import { has, linkerMixin } from '/imports/utils'
+import { Members } from './collection.js'
+import { Squads } from '../Squads'
+import { Divisions } from '../Divisions/collection.js'
+
+
 const checkProps = (object, key, target) => has.call(target, key) ? delete object[key] : false; // eslint-disable-line
 
 
@@ -30,7 +32,7 @@ const memberLinks = linkerMixin({
       linkName: 'division',
       type: 'one',
       field: 'roster.division',
-      collection: Division,
+      collection: Divisions,
     },
   ],
 

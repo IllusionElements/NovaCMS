@@ -1,9 +1,10 @@
-import { AlertEmitter, AlertEvents } from '/imports/api/alert/server/events/AlertActions.js'
-//import { notifyMembers } from '...'
+import { Meteor } from 'meteor/meteor'
+import { AlertEmitter, AlertEvents } from './events/AlertActions.js'
+
+// import { notifyMembers } from '...'
 
 const { ALERT_CREATED } = AlertEvents
 
-AlertEmitter.on(AlertEvents.ALERT_CREATED, ({ alertId, notifyMembers }) => {
-
-  Meteor.call('console.log', notifyMembers({ alertId }));
-})
+AlertEmitter.on(ALERT_CREATED, ({ alertId, notifyMembers }) => (
+  Meteor.call('console.log', notifyMembers({ alertId }))
+))

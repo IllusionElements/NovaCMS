@@ -1,10 +1,13 @@
-import Meteor from 'meteor/meteor'
-import AlertService from './services/AlertService'
+import { Meteor } from 'meteor/meteor'
+import check from 'meteor/check'
 
 Meteor.Methods({
-  'alert.sendAlert' ({ userId, alertId }) {
+  'alert.sendAlert': ({ userId, alertId }) => {
     check(userId, String)
     check(alertId, String)
-    return AlertService.sendAlert({ userId, alertId })
-  }
+    return import('../services/AlertService').then(AlertService => AlertService.sendAlert({
+      userId,
+      alertId,
+    }))
+  },
 })

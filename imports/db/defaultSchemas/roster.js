@@ -1,6 +1,6 @@
 import extendSchema from '@novacms/extendschema'
 
-export const composeRosterSchema = extendSchema({
+const composeRosterSchema = extendSchema({
   name: String,
   createdBy: Object,
   'createdBy.name': String,
@@ -10,3 +10,5 @@ export const composeRosterSchema = extendSchema({
     defaultValue: true,
   },
 })
+
+export default composeRosterSchema
