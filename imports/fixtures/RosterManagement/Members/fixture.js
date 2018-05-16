@@ -1,4 +1,4 @@
-import { Members } from '/imports/modules/db'
+import { Members } from '/imports/modules/RosterManagement/db'
 import { MemberData } from './fixture.js'
 
-MemberData.forEach((member) => Members.insert(member));
+MemberData.forEach(member => Members.insert(member))
