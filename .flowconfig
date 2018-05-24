@@ -1,0 +1,12 @@
+[ignore]
+  .*/node_modules/.*/\(lib\|test\).*\.json$
+  .*/.json$
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

@@ -1,8 +1,8 @@
-import { Squads } from '../collection.js'
+import { Squads } from '../'
 
-export const squadListQuery = Squads.createQuery('Squad List', {
+export default Squads.createQuery('Squad List', {
   $filter({ filters, params }) {
-    filters._id = params._id
+    filters.squadId = params.squadId
   },
   $filters: {
     visable: true,
